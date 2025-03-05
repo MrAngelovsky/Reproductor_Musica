@@ -9,8 +9,8 @@ const PlayerScreen = ({ route, navigation }) => {
     const { cancion: cancionInicial, todasLasCanciones } = route.params
     const [cancion, setCancion] = useState(cancionInicial)
     const [reproduciendo, setReproduciendo] = useState(true)
-    const [progreso, setProgreso] = useState(0.00)
-    const [tiempoActual, setTiempoActual] = useState("0:00")
+    const [progreso, setProgreso] = useState(0.2)
+    const [tiempoActual, setTiempoActual] = useState("0:52")
 
     const manejarReproducirPausar = () => {
         setReproduciendo(!reproduciendo)
@@ -31,16 +31,18 @@ const PlayerScreen = ({ route, navigation }) => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <TouchableOpacity style={styles.backButton} onPress={() => {
-                    console.log("Botón de retroceso presionado");
-                    navigation.goBack();
-                }}>
-                    <Icon name="chevron-back" color="#fff" size={30} />
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <Icon name="chevron-down" color="#ccc" size={28} />
                 </TouchableOpacity>
                 <Text style={styles.headerTitle}>WEEKEND PLAYLIST</Text>
-                <TouchableOpacity>
-                    <Icon name="heart" color="#1DB954" size={24} />
-                </TouchableOpacity>
+                <View style={styles.headerIcons}>
+                    <TouchableOpacity>
+                        <Icon name="heart-outline" color="#ccc" size={22} />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={{ marginLeft: 15 }}>
+                        <Icon name="ellipsis-vertical" color="#ccc" size={22} />
+                    </TouchableOpacity>
+                </View>
             </View>
 
             <View style={styles.albumContainer}>
@@ -63,6 +65,9 @@ const PlayerScreen = ({ route, navigation }) => {
             </View>
 
             <View style={styles.controlsContainer}>
+                <TouchableOpacity>
+                    <Icon name="shuffle" color="#ccc" size={20} />
+                </TouchableOpacity>
                 <TouchableOpacity onPress={manejarAnterior}>
                     <Icon name="play-skip-back" color="#fff" size={35} />
                 </TouchableOpacity>
@@ -71,6 +76,9 @@ const PlayerScreen = ({ route, navigation }) => {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={manejarSiguiente}>
                     <Icon name="play-skip-forward" color="#fff" size={35} />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Icon name="repeat" color="#ccc" size={20} />
                 </TouchableOpacity>
             </View>
 
@@ -91,38 +99,42 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        marginBottom: 30,
+        marginBottom: 20,
     },
     headerTitle: {
         color: "#fff",
         fontSize: 16,
-        fontWeight: "600",
+        fontWeight: "bold",
+    },
+    headerIcons: {
+        flexDirection: "row",
+        alignItems: "center",
     },
     albumContainer: {
         alignItems: "center",
-        marginBottom: 30,
+        marginBottom: 20,
     },
     albumCover: {
-        width: width - 80,
-        height: width - 80,
+        width: width - 60,
+        height: width - 60,
         borderRadius: 10,
     },
     infoContainer: {
         alignItems: "center",
-        marginBottom: 30,
+        marginBottom: 20,
     },
     songTitle: {
         color: "#fff",
         fontSize: 24,
         fontWeight: "bold",
-        marginBottom: 8,
+        marginBottom: 5,
     },
     artistName: {
-        color: "#9f9f9f",
+        color: "#aaa",
         fontSize: 18,
     },
     progressContainer: {
-        marginBottom: 30,
+        marginBottom: 20,
     },
     progressBar: {
         height: 4,
@@ -137,17 +149,17 @@ const styles = StyleSheet.create({
     timeContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
-        marginTop: 10,
+        marginTop: 5,
     },
     timeText: {
-        color: "#9f9f9f",
+        color: "#aaa",
         fontSize: 14,
     },
     controlsContainer: {
         flexDirection: "row",
-        justifyContent: "center",
+        justifyContent: "space-between",
         alignItems: "center",
-        marginBottom: 40,
+        marginBottom: 20,
     },
     playButton: {
         backgroundColor: "#1DB954",
@@ -156,7 +168,6 @@ const styles = StyleSheet.create({
         borderRadius: 35,
         justifyContent: "center",
         alignItems: "center",
-        marginHorizontal: 30,
     },
     lyricsButton: {
         backgroundColor: "#1DB954",
@@ -169,10 +180,6 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "bold",
     },
-    backButton: {
-        padding: 10,
-    },
 })
 
 export default PlayerScreen;
-

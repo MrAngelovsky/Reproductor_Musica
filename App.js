@@ -15,7 +15,7 @@ export default function App() {
           initialRouteName="Lista"
           screenOptions={{
             headerShown: false,
-            gestureEnabled: true, // Habilita los gestos de navegación
+            gestureEnabled: true,
             cardStyleInterpolator: ({ current, layouts }) => {
               return {
                 cardStyle: {
