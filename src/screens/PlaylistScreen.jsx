@@ -14,7 +14,7 @@ const PlaylistScreen = ({ navigation }) => {
             listaDeReproduccion.map((cancion) => (cancion.id === id ? { ...cancion, favorita: !cancion.favorita } : cancion)),
         )
     }
-    
+
     const listaConFeaturing = [{ tipo: "featuring" }, ...listaDeReproduccion];
 
     const reproducirCancion = (cancion) => {
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     headerIcons: {
         flexDirection: "row",
         alignItems: "center",
-        gap: 16, // Espacio entre los iconos
+        gap: 16,
     },
     playlistTitle: {
         color: "#fff",
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     featuringContainer: {
         paddingVertical: 10,
         paddingHorizontal: 20,
-        backgroundColor: "#111",  // Fondo ligeramente distinto si lo deseas
+        backgroundColor: "#111",
     },
     featuringText: {
         color: "#fff",

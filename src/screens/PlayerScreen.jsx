@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react"
 import { StyleSheet, View, Image, TouchableOpacity, Dimensions } from "react-native"
 import { Text } from "react-native-elements"
@@ -11,7 +9,7 @@ const PlayerScreen = ({ route, navigation }) => {
     const { cancion: cancionInicial, todasLasCanciones } = route.params
     const [cancion, setCancion] = useState(cancionInicial)
     const [reproduciendo, setReproduciendo] = useState(true)
-    const [progreso, setProgreso] = useState(0.00) // Valor fijo para mostrar
+    const [progreso, setProgreso] = useState(0.00)
     const [tiempoActual, setTiempoActual] = useState("0:00")
 
     const manejarReproducirPausar = () => {
@@ -55,7 +53,6 @@ const PlayerScreen = ({ route, navigation }) => {
             </View>
 
             <View style={styles.progressContainer}>
-                {/* Barra de progreso estática usando View */}
                 <View style={styles.progressBar}>
                     <View style={[styles.progressFill, { width: `${progreso * 100}%` }]} />
                 </View>
@@ -173,7 +170,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
     },
     backButton: {
-        padding: 10, // Área de toque más grande
+        padding: 10,
     },
 })
 

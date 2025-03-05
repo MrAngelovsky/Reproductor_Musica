@@ -74,5 +74,5 @@ const styles = StyleSheet.create({
   },
 })
 
-export default ElementoCancion
+export default ElementoCancion;
 
